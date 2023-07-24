@@ -16,7 +16,7 @@ public:
     {
     }
 
-    char GetCharacter() { return _character; }
+    char GetCharacter() const { return _character; }
     bool CanEnter(IEntity& entity) { return _canEnter; }
     void Enter(IEntity& entity) {  }
 
@@ -32,8 +32,8 @@ public:
     {
     }
 
-    char GetCharacter() { return _character; }
-    const Position& GetPosition() { return _position; }
+    char GetCharacter() const { return _character; }
+    const Position& GetPosition() const { return _position; }
     void SetPosition(const Position& position) { _position = position; }
     void Collide(IEntity& entity) {  }
     void Update() {  }
