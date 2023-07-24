@@ -70,7 +70,7 @@ void Level::RenderAll()
     for (auto i = _entities.begin(); i != _entities.end(); i++)
     {
         auto entity = *i;
-        auto pos = entity->GetPosition();
+        const Position& pos = entity->GetPosition();
         SetCharacter(entity->GetCharacter(), pos.GetX(), pos.GetY());
     }
 }

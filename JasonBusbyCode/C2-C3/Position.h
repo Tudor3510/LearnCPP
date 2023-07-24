@@ -8,8 +8,8 @@ class Position
 public:
     Position(int x, int y);
 
-    int GetX();
-    int GetY();
+    int GetX() const;
+    int GetY() const;
 };
 
 

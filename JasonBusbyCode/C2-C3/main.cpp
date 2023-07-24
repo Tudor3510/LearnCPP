@@ -33,8 +33,8 @@ public:
     }
 
     char GetCharacter() { return _character; }
-    Position& GetPosition() { return _position; }
-    void SetPosition(Position& position) { _position = position; }
+    const Position& GetPosition() { return _position; }
+    void SetPosition(const Position& position) { _position = position; }
     void Collide(IEntity& entity) {  }
     void Update() {  }
 };
