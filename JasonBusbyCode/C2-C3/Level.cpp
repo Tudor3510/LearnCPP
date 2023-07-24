@@ -8,8 +8,8 @@ Level::Level(int width, int height) :_width(width), _height(height), _tiles(widt
 {
 }
 
-int Level::GetWidth() { return _width; }
-int Level::GetHeight() { return _height; }
+int Level::GetWidth() const { return _width; }
+int Level::GetHeight() const { return _height; }
 
 void Level::SetTile(ITile& tile, Position pos)
 {
@@ -81,7 +81,7 @@ void Level::RenderAll()
         (*i)->Update();
  }
 
-int Level::GetIndexForXY(int x, int y)
+int Level::GetIndexForXY (int x, int y) const
 {
     return _width * y + x;
 }
