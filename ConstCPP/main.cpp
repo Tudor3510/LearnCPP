@@ -20,45 +20,50 @@ public:
 
 
 
-int GetInt(const string prompt)
-{
-    return 4;
-}
-
-int GetInt(const string& prompt)
-{
-    cout << prompt;
-    return 10;
-}
 
 
 
 
-
-
-
-
-
+// THIS IS NOT WORKING !!!!!!!!!!
+/*
 class Position
 {
-    const int _x, _y;
+    int _x, _y;
 public:
     Position(int x, int y): _x(x), _y(y)
     {
     }
 
-    const int GetX() const
+    int GetX() const
     {
         return _x;
     }
 
-    const int GetY() const
+    int GetY() const
     {
         return _y;
     }
 };
 
+int main()
+{
+    Position& position = Position(3, 4);
 
+    cout    << "X: " << position.GetX() << "\n"
+            << "Y: " << position.GetY() << "\n";
+
+    return 0;
+}
+*/
+
+
+
+
+
+
+
+
+/*
 int main()
 {
 
@@ -75,3 +80,4 @@ int main()
 
     return 0;
 }
+*/
