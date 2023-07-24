@@ -62,6 +62,30 @@ int main()
 
 
 
+// THIS IS NOT WORKING !!!!!!!!!
+// cannot overload functions distinguished by return type alone
+/*
+int ReturnTen()
+{
+    return 10;
+}
+
+const int ReturnTen()
+{
+    return 10;
+}
+
+int main ()
+{
+    int a = ReturnTen();
+}
+*/
+
+
+
+
+
+
 
 /*
 int main()
