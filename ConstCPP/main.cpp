@@ -87,21 +87,109 @@ int main ()
 
 
 
+
+
+// THIS IS NOT WORKING !!!!!!!
+// can not call non-const functions from const objects
 /*
+class Position
+{
+private:
+    int _x, _y;
+
+public:
+    int GetX() const { return _x; }
+    int GetY() const { return _y; }
+
+    void SetX(int x) { _x = x; }
+    void SetY(int y) { _y = y; }
+};
+
+void Blegh(const Position& pos)
+{
+    pos.SetX(10);
+}
+
 int main()
 {
+    Position pos;
+    pos.SetX(10);
+    pos.SetY(40);
 
-    int x = 7;
-    cout << x << "\n";
+    Blegh(pos);
 
-    const_cast<int&> (x) = 89;
-    cout << x << "\n";
+    cin.get();
+    return 0;
+}
+*/
 
-    int const *  ptr = &x;
 
-    int b = 8;
-    ptr = &b;
+
+
+
+
+
+
+
+// THIS IS WORKING !!!!!!!!!
+// but bad code
+/*
+class Position
+{
+private:
+    int _x, _y;
+
+public:
+    int GetX() const { return _x; }
+    int GetY() const { return _y; }
+
+    void SetX(int x) { _x = x; }
+    void SetY(int y) { _y = y; }
+};
+
+void Blegh(const Position& pos)
+{
+    Position& pos2 = const_cast<Position&> (pos);
+    pos2.SetX(100);
+}
+
+int main()
+{
+    Position pos;
+    pos.SetX(10);
+    pos.SetY(40);
+
+    Blegh(pos);
+
+    cout << "X: " << pos.GetX() << "\n";                // X: 100
 
     return 0;
 }
 */
+
+
+
+
+
+
+
+
+
+// class Position
+// {
+// private:
+//     int _x, _y;
+
+// public:
+//     int GetX() const { return _x; }
+//     int GetY() const { return _y; }
+
+//     void SetX(int x) { _x = x; }
+//     void SetY(int y) { _y = y; }
+// };
+
+// void Blegh(const Position& pos)
+// {
+//     Position& pos2 = const_cast<Position&> (pos);
+//     pos2.SetX(100);
+// }
