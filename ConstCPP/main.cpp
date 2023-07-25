@@ -207,3 +207,135 @@ int main()
     return 0;
 }
 */
+
+
+
+
+
+
+
+
+
+
+
+// THIS IS WORKING !!!!!!!
+/*
+class Whoa
+{
+public:
+    void Test() const    { cout << "CONST TEST\n"; }
+    void Test()          { cout << "NON CONST TEST\n"; }
+};
+
+void Blegh(const Whoa& whoa)
+{
+    whoa.Test();
+}
+
+void Blegh2(Whoa& whoa)
+{
+    whoa.Test();
+}
+
+int main()
+{
+    Whoa w;
+
+    Blegh(w);                       //CONST TEST
+    Blegh2(w);                      //NON CONST TEST
+
+    return 0;
+}
+*/
+
+
+
+
+
+
+
+
+// THIS IS NOT WORKING !!!!!!
+// const int Test::_a is a static data member; it can only be initialized at its definition
+/*
+class Test
+{
+    const static int _a;
+public:
+    Test(int a): _a(a)
+    {
+    }
+};
+
+int main()
+{
+    Test test(8);
+
+
+
+    return 0;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+// THIS IS WORKING !!!!!!!
+/*
+class Test
+{
+    const static int _a = 108;
+public:
+    Test()
+    {
+    }
+};
+
+int main()
+{
+    Test test;
+
+
+
+    return 0;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+// THIS IS WORKING !!!!!!
+/*
+class Test
+{
+    const static int _a;
+public:
+    Test()
+    {
+    }
+};
+
+const int Test::_a = 1299;
+
+int main()
+{
+    Test test;
+
+
+
+    return 0;
+}
+*/
