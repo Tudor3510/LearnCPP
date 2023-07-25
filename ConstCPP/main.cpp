@@ -174,22 +174,36 @@ int main()
 
 
 
+// THIS IS WORKING
+// but can result in undefined behavior
+// Better use rvalue reference
+/*
+class Position
+{
+private:
+    int _x, _y;
 
-// class Position
-// {
-// private:
-//     int _x, _y;
+public:
+    int GetX() const { return _x; }
+    int GetY() const { return _y; }
 
-// public:
-//     int GetX() const { return _x; }
-//     int GetY() const { return _y; }
+    void SetX(int x) { _x = x; }
+    void SetY(int y) { _y = y; }
+};
 
-//     void SetX(int x) { _x = x; }
-//     void SetY(int y) { _y = y; }
-// };
+void Blegh(const Position& pos)
+{
+    Position& pos2 = const_cast<Position&> (pos);
+    pos2.SetX(103);
 
-// void Blegh(const Position& pos)
-// {
-//     Position& pos2 = const_cast<Position&> (pos);
-//     pos2.SetX(100);
-// }
+    cout << "X: " << pos.GetX() << "\n";
+}
+
+int main()
+{
+    Blegh(Position());
+
+
+    return 0;
+}
+*/
