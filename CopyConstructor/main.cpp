@@ -429,3 +429,45 @@ int main()
     return 0;
 }
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+// THIS IS WORKING !!!!!!!!
+// We are deleting the copy constructor and the assignment operator
+/*
+class Vector2
+{
+private:
+    int _x, _y;
+
+    Vector2(const Vector2& rhs) = delete;
+    Vector2& operator = (const Vector2& rhs) = delete;
+
+public:
+    Vector2() : _x(0), _y(0)
+    {
+        cout << "Constructor without parameters" << "\n";
+    }
+
+    Vector2(int x, int y): _x(x), _y(y)
+    {
+    }
+};
+
+int main()
+{
+    Vector2 vect2(1, 2);
+
+    return 0;
+}
+*/
