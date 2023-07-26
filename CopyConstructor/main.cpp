@@ -122,6 +122,15 @@ public:
     {
     }
 
+    Vector2& operator= (const Vector2& rhs)
+    {
+        cout << "operator = (or operator=)" << "\n";
+
+        _x = rhs._x;
+        _y = rhs._y;
+        return *this;
+    }
+
     int GetX() const { return _x; }
     int GetY() const { return _y; }
 };
@@ -133,7 +142,7 @@ int main()
     Vector2 copy(vect2);                        // Copy constructor
 
     Vector2 copy2;                              // Constructor without parameters
-    copy2 = vect2;
+    copy2 = vect2;                              // operator = (or operator=)
 
     return 0;
 }
