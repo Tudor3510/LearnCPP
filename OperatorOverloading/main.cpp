@@ -276,3 +276,73 @@ int main()
     return 0;
 }
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// THIS WORKS !!!!!!!!!!
+// but be careful with all the cases
+/*
+class Vector2
+{
+    float _x, _y;
+
+public:
+    Vector2(float x, float y) : _x(x), _y(y)
+    {
+    }
+
+    float GetX() const { return _x; }
+    float GetY() const { return _y; }
+
+    Vector2 operator* (int multiplier)
+    {
+        return Vector2(_x * multiplier, _y * multiplier);
+    }
+
+    Vector2& operator* ()
+    {
+        cout << "Overloading dereference operator      ";
+        return *this;
+    }
+};
+
+int main()
+{
+    Vector2 myObject(3, 21);
+    auto afterMultiplication = myObject * 3;
+    cout << "X: " << afterMultiplication.GetX() << "\n"             // X: 9
+         << "Y: " << afterMultiplication.GetY() << "\n"             // Y: 63
+         << "\n";
+
+    
+    
+    Vector2 * myObjectPtr = &afterMultiplication;
+
+    cout << "X: " << (*myObjectPtr).GetX() << "\n"                  // X: 9
+         << "Y: " << (*myObjectPtr).GetY() << "\n"                  // Y: 63
+         << "\n";
+
+    // The "Overloading dereference operator " is not printed because we have overloaded the operator* for Vector2,
+    // not for Vector2*(you can not overload the dereference operator for the built-in pointer type). So we can use
+    // operator* directly on objects of type Vector2, as in the example below
+
+
+    cout << "X: " << (*afterMultiplication).GetX() << "\n"          // X: Overloading dereference operator      9
+         << "Y: " << (*afterMultiplication).GetY() << "\n"          // Y: Overloading dereference operator      63
+         << "\n";
+
+
+    return 0;
+}
+*/
