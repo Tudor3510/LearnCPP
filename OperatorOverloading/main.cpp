@@ -450,3 +450,142 @@ int main()
     return 0;
 }
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+// THIS WORKS !!!!!!
+/*
+class Vector2
+{
+    float _x, _y;
+
+public:
+    Vector2(float x, float y) : _x(x), _y(y)
+    {
+    }
+
+    float GetX() const { return _x; }
+    float GetY() const { return _y; }
+
+
+};
+
+ostream& operator << (ostream& out, const Vector2& rhs)
+{
+    out << "(" << rhs.GetX() << ", " << rhs.GetY() << ")";
+    return out;
+}
+
+
+
+int main()
+{
+    Vector2 myVec(55, 56);
+
+    cout << myVec;
+
+    return 0;
+}
+*/
+
+
+
+
+
+
+
+
+// THIS WORKS !!!!!!!!!
+// but it is WEIRD (I think that nobody ever does that)
+/*
+class Vector2
+{
+    float _x, _y;
+
+public:
+    Vector2(float x, float y) : _x(x), _y(y)
+    {
+    }
+
+    float GetX() const { return _x; }
+    float GetY() const { return _y; }
+
+    ostream& operator << (ostream& out) const
+    {
+        out << "(" << GetX() << ", " << GetY() << ")";
+        return out;
+    }
+};
+
+
+int main()
+{
+    Vector2 myVec(55, 56);
+    myVec << cout << " Object: " << "\n";
+
+    return 0;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+// THIS WORKS !!!!!!!!
+// but it is WEIRD (I think that nobody ever does that)
+/*
+class Vector2
+{
+    float _x, _y;
+    ostream& _os;
+
+public:
+    Vector2(float x, float y, ostream& os) : _x(x), _y(y), _os(os)
+    {
+    }
+
+    float GetX() const { return _x; }
+    float GetY() const { return _y; }
+
+    istream& operator >> (istream& in)
+    {
+        _os << "Enter X: ";
+        in >> _x;
+
+        _os << "Enter Y: ";
+        in >> _y;
+
+        return in;
+    }
+};
+
+
+int main()
+{
+    Vector2 myObject (0, 0, cout);
+
+    myObject >> cin;
+
+    cout << "X: " << myObject.GetX() << "\n"        // Will show the entered X and
+         << "Y: " << myObject.GetY() << "\n";       // the entered Y
+
+    return 0;
+}
+*/
