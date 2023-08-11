@@ -346,3 +346,107 @@ int main()
     return 0;
 }
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// THIS WORKS !!!!!!!!!!!!
+// but be careful that the object returned is not a reference
+/*
+class Vector2
+{
+    float _x, _y;
+
+public:
+    Vector2(float x, float y) : _x(x), _y(y)
+    {
+    }
+
+    float GetX() const { return _x; }
+    float GetY() const { return _y; }
+
+    void SetX(int x) { _x = x; }
+    void SetY(int y) { _y = y; }
+
+    Vector2 operator* (int multiplier)
+    {
+        return Vector2(_x * multiplier, _y * multiplier);
+    }
+
+    Vector2 operator* ()
+    {
+        cout << "Overloading dereference operator      ";
+        return *this;
+    }
+};
+
+int main()
+{
+    Vector2 myObject(43, 81);
+
+    (*myObject).SetY(173);                  // Overloading dereference operator
+    
+    cout << "\n";
+
+    cout << (*myObject).GetY() << "\n";     // Overloading dereference operator      81
+
+    return 0;
+}
+*/
+
+
+
+
+
+
+
+
+
+// THIS WORKS !!!!!!!!!!
+/*
+class Vector2
+{
+    float _x, _y;
+
+public:
+    Vector2(float x, float y) : _x(x), _y(y)
+    {
+    }
+
+    float GetX() const { return _x; }
+    float GetY() const { return _y; }
+
+    Vector2 operator* (int multiplier)
+    {
+        return Vector2(_x * multiplier, _y * multiplier);
+    }
+
+    string operator* ()
+    {
+        cout << "Overloading dereference operator    ";
+        return "Un nou string";
+    }
+};
+
+
+int main()
+{
+    Vector2 myObject(26, 34);
+
+    cout << *myObject << "\n";              // Overloading dereference operator    Un nou string
+
+
+    return 0;
+}
+*/
