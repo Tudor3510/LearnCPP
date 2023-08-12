@@ -27,3 +27,22 @@ int main()
     return 0;
 }
 */
+
+
+
+
+
+
+// THIS DOES NOT WORK !!!!!
+// 'cout' was not declared in this scope; did you mean 'std::cout'?
+// even though we call the cout function with an argument that is of a type defined in std
+// I dont know why, I could not find an answer
+/*
+int main()
+{
+    std::string str ("Un string");
+    cout << str;
+
+    return 0;
+}
+*/
