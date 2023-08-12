@@ -102,8 +102,8 @@ int main(){
 
 
 
-
-
+// THIS WORKS !!!!!!!!
+/*
 class BaseClass
 {
 public:
@@ -151,8 +151,11 @@ int main(){
     BaseClass* baseClassPtr = new BaseClass();
 
 
-    ThirdDerivedClass* thirdDerivedPtr = new ThirdDerivedClass();
-    ThirdDerivedClass::FunctionToPrint(thirdDerivedPtr);
+    ThirdDerivedClass* thirdDerivedPtr = new ThirdDerivedClass();       // Function from ThirdDerivedClass
+    ThirdDerivedClass::FunctionToPrint(thirdDerivedPtr);                // Function from BaseClass
+                                                                        // Hello from ThirdDerivedClass
+
 
     return 0;
 }
+*/
