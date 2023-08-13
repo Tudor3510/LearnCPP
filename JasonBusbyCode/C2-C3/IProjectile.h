@@ -3,7 +3,7 @@
 
 #include "IEntity.h"
 
-class IProjectile : IEntity
+class IProjectile : public IEntity
 {
 public:
     virtual int GetDamage() = 0;
