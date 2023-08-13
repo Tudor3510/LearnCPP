@@ -1,6 +1,12 @@
 #include "Vector2.h"
 
 
+const Vector2 Vector2::North = Vector2(0, -1);
+const Vector2 Vector2::South = Vector2(0, 1);
+const Vector2 Vector2::East = Vector2(1, 0);
+const Vector2 Vector2::West = Vector2(-1, 0);
+
+
 Vector2::Vector2(int x, int y) : _x(x), _y(y)
 {
 }

@@ -1,8 +1,15 @@
 #ifndef VECTOR2_H
 #define VECTOR2_H
 
+
+
 class Vector2
 {
+    static const Vector2 North;
+    static const Vector2 South;
+    static const Vector2 East;
+    static const Vector2 West;
+
     int _x, _y;
 
 public:
