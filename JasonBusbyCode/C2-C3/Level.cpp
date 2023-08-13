@@ -46,6 +46,12 @@ void Level::SetEntity(IEntity& entity, Vector2 pos)
 
 void Level::RemoveEntity(IEntity& entity)
 {
+    if (_isUpdating)
+    {
+        _entitiesToRemove.push_back(&entity);
+        return;
+    }
+
     const Vector2& position = entity.GetPosition();
     auto tile = _tiles[GetIndexForXY(position.GetX(), position.GetY())];
 
@@ -104,8 +110,17 @@ void Level::RenderAll()
 
 void Level::Update()
 {
+    _isUpdating = true;
+
     for (auto i = _entities.begin(); i != _entities.end(); i++)
         (*i)->Update();
+
+    _isUpdating = false;
+
+    for (auto i = _entitiesToRemove.begin(); i != _entitiesToRemove.end(); i++)
+        RemoveEntity(**i);
+
+    _entitiesToRemove.clear();
 }
 
 int Level::GetIndexForXY (int x, int y) const
