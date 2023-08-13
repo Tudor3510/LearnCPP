@@ -34,6 +34,25 @@ void Level::SetEntity(IEntity& entity, Vector2 pos)
     entity.SetPosition(pos);
 }
 
+void Level::RemoveEntity(IEntity& entity)
+{
+    const Vector2& position = entity.GetPosition();
+    auto tile = _tiles[GetIndexForXY(position.GetX(), position.GetY())];
+
+    for (auto i = _entities.begin(); i != _entities.end(); i++)
+    {
+        if (*i != &entity)
+        {
+            continue;
+        }
+
+        _entities.erase(i);
+        break;
+    }
+
+    SetCharacter(tile->GetCharacter(), position.GetX(), position.GetY());
+}
+
 bool Level::MoveEntity(IEntity& entity, Vector2 pos)
 {
     if (pos.GetX() < 0 || pos.GetX() >= _width || pos.GetY() < 0 || pos.GetY() >= _height)
