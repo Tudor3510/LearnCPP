@@ -32,6 +32,8 @@ void Level::SetEntity(IEntity& entity, Vector2 pos)
 {
     _entities.push_back(&entity);
     entity.SetPosition(pos);
+
+    SetCharacter(entity.GetCharacter(), pos.GetX(), pos.GetY());
 }
 
 void Level::RemoveEntity(IEntity& entity)
@@ -94,11 +96,11 @@ void Level::RenderAll()
     }
 }
 
- void Level::Update()
- {
+void Level::Update()
+{
     for (auto i = _entities.begin(); i != _entities.end(); i++)
         (*i)->Update();
- }
+}
 
 int Level::GetIndexForXY (int x, int y) const
 {
