@@ -8,7 +8,7 @@ class IEntity
 public:
     virtual char GetCharacter() const = 0;
     virtual const Vector2& GetPosition() const = 0;
-    virtual void SetPosition(const Vector2& Vector2) = 0;
+    virtual void SetPosition(const Vector2& position) = 0;
     virtual void Collide(IEntity& entity) = 0;
     virtual void Update() = 0;
 };

@@ -22,7 +22,7 @@ public:
     int GetDamage();
     char GetCharacter() const;
     const Vector2& GetPosition() const;
-    void SetPosition(const Vector2& Vector2);
+    void SetPosition(const Vector2& position);
     void Collide(IEntity& entity);
     void Update();
 };

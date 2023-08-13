@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <conio.h>
 #include "Level.h"
+#include "SingleProjectile.h"
 using namespace std;
 
 class BasicTile : public ITile
@@ -34,7 +35,7 @@ public:
 
     char GetCharacter() const { return _character; }
     const Vector2& GetPosition() const { return _Vector2; }
-    void SetPosition(const Vector2& Vector2) { _Vector2 = Vector2; }
+    void SetPosition(const Vector2& position) { _Vector2 = position; }
     void Collide(IEntity& entity) {  }
     void Update() {  }
 };
@@ -88,6 +89,9 @@ int main(){
             case 'd':
                 level.MoveEntity(player, Vector2(pos.GetX() + 1, pos.GetY()));
                 break;
+            case ' ':
+                auto projectile = new SingleProjectile(level, 10, '*', Vector2(0, 1));
+                level.SetEntity(*projectile, pos + Vector2(0, 1));
             }
         }
     }

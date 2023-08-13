@@ -3,17 +3,8 @@
         {
             "type": "cppbuild",
             "label": "C/C++: g++.exe build active file",
-            "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+            "command": "C:\\msys64\\mingw64\\bin\\mingw32-make.exe",
             "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "main.cpp",
-                "Level.cpp",
-                "Position.cpp",
-                "Vector2.cpp",
-                "-o",
-                "${workspaceFolder}\\main.exe",
-                "-lwinmm"
             ],
             "options": {
                 "cwd": "${fileDirname}"

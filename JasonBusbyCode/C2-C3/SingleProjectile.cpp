@@ -7,18 +7,22 @@ SingleProjectile::SingleProjectile(Level &level, int damage, char ch, const Vect
 
 int SingleProjectile::GetDamage()
 {
+    return _damage;
 }
 
 char SingleProjectile::GetCharacter() const
 {
+    return _character;
 }
 
 const Vector2& SingleProjectile::GetPosition() const
 {
+    return _position;
 }
 
-void SingleProjectile::SetPosition(const Vector2& Vector2)
+void SingleProjectile::SetPosition(const Vector2& position)
 {
+    _position = position;
 }
 
 void SingleProjectile::Collide(IEntity& entity)
@@ -28,7 +32,7 @@ void SingleProjectile::Collide(IEntity& entity)
 
 void SingleProjectile::Update()
 {
-    if (++ _frameCount < 15)
+    if (++ _frameCount < 0)
         return;
 
     _frameCount = 0;
