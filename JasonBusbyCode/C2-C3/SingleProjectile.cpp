@@ -36,5 +36,6 @@ void SingleProjectile::Update()
         return;
 
     _frameCount = 0;
-    _level.MoveEntity(*this, _position + _velocity);
+    if (!_level.MoveEntity(*this, _position + _velocity))
+        _level.RemoveEntity(*this);
 }

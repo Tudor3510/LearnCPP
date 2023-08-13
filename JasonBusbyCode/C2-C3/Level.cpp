@@ -30,6 +30,12 @@ void Level::SetTiles(ITile& tile, Vector2 from, Vector2 to)
 
 void Level::SetEntity(IEntity& entity, Vector2 pos)
 {
+    auto tile = _tiles[GetIndexForXY(pos.GetX(), pos.GetY())];
+    if (!tile->CanEnter(entity))
+    {
+        return;
+    }
+
     _entities.push_back(&entity);
     entity.SetPosition(pos);
 
@@ -44,9 +50,7 @@ void Level::RemoveEntity(IEntity& entity)
     for (auto i = _entities.begin(); i != _entities.end(); i++)
     {
         if (*i != &entity)
-        {
             continue;
-        }
 
         _entities.erase(i);
         break;
