@@ -1,3 +1,11 @@
+# Determine the operating system
+ifeq ($(OS),Windows_NT)
+    RM := del /Q /F
+else
+    RM := rm -f
+endif
+
+
 # Compiler and flags
 CXX := g++
 CXXFLAGS := -fdiagnostics-color=always -g
@@ -23,4 +31,4 @@ $(TARGET): $(OBJ)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	$(RM) $(OBJ) $(TARGET)
