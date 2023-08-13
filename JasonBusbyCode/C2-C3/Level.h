@@ -9,6 +9,9 @@
 
 class Level
 {
+    bool _isUpdating;
+    std::vector <IEntity*> _entitiesToRemove;
+
     int _width, _height;
     std::vector <ITile*> _tiles;
     std::vector <IEntity*> _entities;

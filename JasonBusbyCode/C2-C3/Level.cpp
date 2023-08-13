@@ -4,7 +4,9 @@
 using namespace std;
 
 
-Level::Level(int width, int height) :_width(width), _height(height), _tiles(width * height)
+
+Level::Level(int width, int height)
+    : _width(width), _height(height), _tiles(width * height), _isUpdating(false)
 {
 }
 
