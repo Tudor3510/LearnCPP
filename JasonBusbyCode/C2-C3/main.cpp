@@ -25,16 +25,16 @@ public:
 class BasicEntity : public IEntity
 {
     char _character;
-    Position _position;
+    Vector2 _Vector2;
 
 public:
-    BasicEntity(char ch): _character(ch), _position(0, 0)
+    BasicEntity(char ch): _character(ch), _Vector2(0, 0)
     {
     }
 
     char GetCharacter() const { return _character; }
-    const Position& GetPosition() const { return _position; }
-    void SetPosition(const Position& position) { _position = position; }
+    const Vector2& GetPosition() const { return _Vector2; }
+    void SetPosition(const Vector2& Vector2) { _Vector2 = Vector2; }
     void Collide(IEntity& entity) {  }
     void Update() {  }
 };
@@ -45,16 +45,16 @@ int main(){
     BasicTile empty(' ', true);
     BasicTile wall('#', false);
 
-    level.SetTiles(empty, Position(0, 0), Position(19, 19));
-    level.SetTiles(wall, Position(0, 0), Position(0, 19));
-    level.SetTiles(wall, Position(0, 0), Position(19, 0));
-    level.SetTiles(wall, Position(19, 0), Position(19, 19));
-    level.SetTiles(wall, Position(0, 19), Position(19, 19));
+    level.SetTiles(empty, Vector2(0, 0), Vector2(19, 19));
+    level.SetTiles(wall, Vector2(0, 0), Vector2(0, 19));
+    level.SetTiles(wall, Vector2(0, 0), Vector2(19, 0));
+    level.SetTiles(wall, Vector2(19, 0), Vector2(19, 19));
+    level.SetTiles(wall, Vector2(0, 19), Vector2(19, 19));
 
-    level.SetTiles(wall, Position(4, 4), Position(6, 6));
+    level.SetTiles(wall, Vector2(4, 4), Vector2(6, 6));
 
     BasicEntity player('$');
-    level.SetEntity(player, Position(1, 1));
+    level.SetEntity(player, Vector2(1, 1));
 
     level.RenderAll();
 
@@ -77,16 +77,16 @@ int main(){
             switch (input)
             {
             case 'w':
-                level.MoveEntity(player, Position(pos.GetX(), pos.GetY() - 1));
+                level.MoveEntity(player, Vector2(pos.GetX(), pos.GetY() - 1));
                 break;
             case 'a':
-                level.MoveEntity(player, Position(pos.GetX() - 1, pos.GetY()));
+                level.MoveEntity(player, Vector2(pos.GetX() - 1, pos.GetY()));
                 break;
             case 's':
-                level.MoveEntity(player, Position(pos.GetX(), pos.GetY() + 1));
+                level.MoveEntity(player, Vector2(pos.GetX(), pos.GetY() + 1));
                 break;
             case 'd':
-                level.MoveEntity(player, Position(pos.GetX() + 1, pos.GetY()));
+                level.MoveEntity(player, Vector2(pos.GetX() + 1, pos.GetY()));
                 break;
             }
         }

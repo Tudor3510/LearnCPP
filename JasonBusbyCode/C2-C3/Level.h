@@ -3,7 +3,7 @@
 
 #include "ITile.h"
 #include "IEntity.h"
-#include "Position.h"
+#include "Vector2.h"
 #include <vector>
 
 
@@ -18,10 +18,10 @@ public:
     int GetWidth() const;
     int GetHeight() const;
 
-    void SetTile(ITile& tile, Position pos);
-    void SetTiles(ITile& tile, Position from, Position to);
-    void SetEntity(IEntity& entity, Position pos);
-    bool MoveEntity(IEntity& entity, Position pos);
+    void SetTile(ITile& tile, Vector2 pos);
+    void SetTiles(ITile& tile, Vector2 from, Vector2 to);
+    void SetEntity(IEntity& entity, Vector2 pos);
+    bool MoveEntity(IEntity& entity, Vector2 pos);
     void Update();
 
     void RenderAll();

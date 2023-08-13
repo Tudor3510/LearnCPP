@@ -10,6 +10,7 @@
                 "main.cpp",
                 "Level.cpp",
                 "Position.cpp",
+                "Vector2.cpp",
                 "-o",
                 "${workspaceFolder}\\main.exe",
                 "-lwinmm"

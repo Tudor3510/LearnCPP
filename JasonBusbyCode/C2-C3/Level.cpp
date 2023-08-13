@@ -11,13 +11,13 @@ Level::Level(int width, int height) :_width(width), _height(height), _tiles(widt
 int Level::GetWidth() const { return _width; }
 int Level::GetHeight() const { return _height; }
 
-void Level::SetTile(ITile& tile, Position pos)
+void Level::SetTile(ITile& tile, Vector2 pos)
 {
     auto index = GetIndexForXY(pos.GetX(), pos.GetY());
     _tiles[index] = &tile;
 }
 
-void Level::SetTiles(ITile& tile, Position from, Position to)
+void Level::SetTiles(ITile& tile, Vector2 from, Vector2 to)
 {
     for (auto x = from.GetX(); x <= to.GetX(); x++)
     {
@@ -28,13 +28,13 @@ void Level::SetTiles(ITile& tile, Position from, Position to)
     }
 }
 
-void Level::SetEntity(IEntity& entity, Position pos)
+void Level::SetEntity(IEntity& entity, Vector2 pos)
 {
     _entities.push_back(&entity);
     entity.SetPosition(pos);
 }
 
-bool Level::MoveEntity(IEntity& entity, Position pos)
+bool Level::MoveEntity(IEntity& entity, Vector2 pos)
 {
     if (pos.GetX() < 0 || pos.GetX() >= _width || pos.GetY() < 0 || pos.GetY() >= _height)
         return false;
@@ -70,7 +70,7 @@ void Level::RenderAll()
     for (auto i = _entities.begin(); i != _entities.end(); i++)
     {
         auto entity = *i;
-        const Position& pos = entity->GetPosition();
+        const Vector2& pos = entity->GetPosition();
         SetCharacter(entity->GetCharacter(), pos.GetX(), pos.GetY());
     }
 }
