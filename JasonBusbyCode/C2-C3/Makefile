@@ -10,7 +10,7 @@ SRC := Level.cpp main.cpp SingleProjectile.cpp Vector2.cpp
 OBJ := $(SRC:.cpp=.o)
 
 # Executable name
-TARGET := main
+TARGET := main.exe
 
 .PHONY: all clean
 
