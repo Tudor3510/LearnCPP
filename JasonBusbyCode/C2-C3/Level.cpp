@@ -52,12 +52,12 @@ void Level::RemoveEntity(IEntity* entity)
         return;
     }
 
-    const Vector2& position = entity->GetPosition();
+    Vector2 position = entity->GetPosition();
     auto tile = _tiles[GetIndexForXY(position.GetX(), position.GetY())];
 
     for (auto i = _entities.begin(); i != _entities.end(); i++)
     {
-        if (*i != &entity)
+        if (*i != entity)
             continue;
 
         _entities.erase(i);
