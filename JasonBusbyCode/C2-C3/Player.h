@@ -12,7 +12,7 @@ class Player : public IEntity
     Level& _level;
 
 public:
-    Player(char ch, const Vector2& position, Level& level);
+    Player(Level& level, char ch);
 
     void Move(const Vector2& direction);
     void FireProjectile();

@@ -4,6 +4,7 @@
 #include <conio.h>
 #include "Level.h"
 #include "SingleProjectile.h"
+#include "Player.h"
 using namespace std;
 
 class BasicTile : public ITile
@@ -54,7 +55,7 @@ int main(){
 
     level.SetTiles(wall, Vector2(4, 4), Vector2(6, 6));
 
-    BasicEntity player('$');
+    Player player(level, '$');
     level.SetEntity(player, Vector2(1, 1));
 
     level.RenderAll();
@@ -78,20 +79,20 @@ int main(){
             switch (input)
             {
             case 'w':
-                level.MoveEntity(player, Vector2(pos.GetX(), pos.GetY() - 1));
+                player.Move(Vector2::North);
                 break;
             case 'a':
-                level.MoveEntity(player, Vector2(pos.GetX() - 1, pos.GetY()));
+                player.Move(Vector2::West);
                 break;
             case 's':
-                level.MoveEntity(player, Vector2(pos.GetX(), pos.GetY() + 1));
+                player.Move(Vector2::South);
                 break;
             case 'd':
-                level.MoveEntity(player, Vector2(pos.GetX() + 1, pos.GetY()));
+                player.Move(Vector2::East);
                 break;
             case ' ':
-                auto projectile = new SingleProjectile(level, 10, '*', Vector2(0, 1));
-                level.SetEntity(*projectile, pos + Vector2(0, 1));
+                player.FireProjectile();
+                break;
             }
         }
     }

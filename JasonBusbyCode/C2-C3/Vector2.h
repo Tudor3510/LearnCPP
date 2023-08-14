@@ -5,12 +5,13 @@
 
 class Vector2
 {
+    int _x, _y;
+
+public:
     static const Vector2 North;
     static const Vector2 South;
     static const Vector2 East;
     static const Vector2 West;
-
-    int _x, _y;
 
 public:
     Vector2(int x, int y);
