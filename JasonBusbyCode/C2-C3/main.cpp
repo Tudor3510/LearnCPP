@@ -43,15 +43,15 @@ public:
 
 
 int main(){
-    Level level(20, 20);
+    Level level(50, 20);
     BasicTile empty(' ', true);
     BasicTile wall('#', false);
 
-    level.SetTiles(empty, Vector2(0, 0), Vector2(19, 19));
+    level.SetTiles(empty, Vector2(0, 0), Vector2(49, 19));
     level.SetTiles(wall, Vector2(0, 0), Vector2(0, 19));
-    level.SetTiles(wall, Vector2(0, 0), Vector2(19, 0));
-    level.SetTiles(wall, Vector2(19, 0), Vector2(19, 19));
-    level.SetTiles(wall, Vector2(0, 19), Vector2(19, 19));
+    level.SetTiles(wall, Vector2(0, 0), Vector2(49, 0));
+    level.SetTiles(wall, Vector2(49, 0), Vector2(49, 19));
+    level.SetTiles(wall, Vector2(0, 19), Vector2(49, 19));
 
     level.SetTiles(wall, Vector2(4, 4), Vector2(6, 6));
 
