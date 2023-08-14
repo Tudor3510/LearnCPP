@@ -23,8 +23,8 @@ public:
 
     void SetTile(ITile& tile, Vector2 pos);
     void SetTiles(ITile& tile, Vector2 from, Vector2 to);
-    void SetEntity(IEntity& entity, Vector2 pos);
-    void RemoveEntity(IEntity& entity);
+    void SetEntity(IEntity* entity, Vector2 pos);
+    void RemoveEntity(IEntity* entity);
     bool MoveEntity(IEntity& entity, Vector2 pos);
     void Update();
 

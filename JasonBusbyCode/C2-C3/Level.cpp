@@ -30,29 +30,29 @@ void Level::SetTiles(ITile& tile, Vector2 from, Vector2 to)
     }
 }
 
-void Level::SetEntity(IEntity& entity, Vector2 pos)
+void Level::SetEntity(IEntity* entity, Vector2 pos)
 {
     auto tile = _tiles[GetIndexForXY(pos.GetX(), pos.GetY())];
-    if (!tile->CanEnter(entity))
+    if (!tile->CanEnter(*entity))
     {
         return;
     }
 
-    _entities.push_back(&entity);
-    entity.SetPosition(pos);
+    _entities.push_back(entity);
+    entity->SetPosition(pos);
 
-    SetCharacter(entity.GetCharacter(), pos.GetX(), pos.GetY());
+    SetCharacter(entity->GetCharacter(), pos.GetX(), pos.GetY());
 }
 
-void Level::RemoveEntity(IEntity& entity)
+void Level::RemoveEntity(IEntity* entity)
 {
     if (_isUpdating)
     {
-        _entitiesToRemove.push_back(&entity);
+        _entitiesToRemove.push_back(entity);
         return;
     }
 
-    const Vector2& position = entity.GetPosition();
+    const Vector2& position = entity->GetPosition();
     auto tile = _tiles[GetIndexForXY(position.GetX(), position.GetY())];
 
     for (auto i = _entities.begin(); i != _entities.end(); i++)
