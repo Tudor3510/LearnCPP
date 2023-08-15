@@ -6,6 +6,8 @@
 #include "SingleProjectile.h"
 #include "Player.h"
 #include "Fireball.h"
+#include "WeaponPickupTile.h"
+#include "MultiFireball.h"
 using namespace std;
 
 class BasicTile : public ITile
@@ -48,6 +50,8 @@ int main(){
     BasicTile empty(' ', true);
     BasicTile wall('#', false);
 
+    WeaponPickupTile weapon1('%', new MultiFireball('^', level, 30));
+
     level.SetTiles(empty, Vector2(0, 0), Vector2(49, 19));
     level.SetTiles(wall, Vector2(0, 0), Vector2(0, 19));
     level.SetTiles(wall, Vector2(0, 0), Vector2(49, 0));
@@ -55,6 +59,9 @@ int main(){
     level.SetTiles(wall, Vector2(0, 19), Vector2(49, 19));
 
     level.SetTiles(wall, Vector2(4, 4), Vector2(6, 6));
+
+
+    level.SetTile(weapon1, Vector2(8, 8));
 
     auto player = new Player(level, '$');
     player->SetWeapon(new Fireball('*', level, 20));
