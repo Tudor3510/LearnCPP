@@ -16,6 +16,14 @@ const Vector2& Player::GetPosition() const
     return _position;
 }
 
+
+void Player::SetWeapon(IWeapon* weapon)
+{
+    _weapons.push(weapon);
+    weapon->Attach(*this);
+}
+
+
 void Player::SetPosition(const Vector2& position)
 {
     _position = position;
@@ -38,5 +46,16 @@ void Player::Move(const Vector2& direction)
 
 void Player::FireProjectile()
 {
-    _level.SetEntity(new SingleProjectile(_level, 10, '*', _direction), _position + _direction);
+    if (_weapons.empty())
+        return;
+
+    if (!_weapons.top()->IsActive(*this))
+        _weapons.pop();
+
+    if (_weapons.empty())
+        return;
+
+    _weapons.top()->Fire(*this, _direction);    
 }
+
+

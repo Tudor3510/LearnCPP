@@ -3,6 +3,8 @@
 
 #include "IEntity.h"
 #include "Level.h"
+#include "IWeapon.h"
+#include <stack>
 
 class Player : public IEntity
 {
@@ -10,12 +12,14 @@ class Player : public IEntity
     Vector2 _position;
     Vector2 _direction;
     Level& _level;
+    std::stack<IWeapon*> _weapons;
 
 public:
     Player(Level& level, char ch);
 
     void Move(const Vector2& direction);
     void FireProjectile();
+    void SetWeapon(IWeapon* weapon);
 
     char GetCharacter() const;
     const Vector2& GetPosition() const;
