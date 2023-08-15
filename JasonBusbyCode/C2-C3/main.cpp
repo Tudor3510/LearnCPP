@@ -56,7 +56,7 @@ int main(){
     level.SetTiles(wall, Vector2(4, 4), Vector2(6, 6));
 
     Player player(level, '$');
-    level.SetEntity(player, Vector2(1, 1));
+    level.SetEntity(&player, Vector2(1, 1));
 
     level.RenderAll();
 

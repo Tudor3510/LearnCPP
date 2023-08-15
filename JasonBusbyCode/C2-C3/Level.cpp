@@ -118,7 +118,7 @@ void Level::Update()
     _isUpdating = false;
 
     for (auto i = _entitiesToRemove.begin(); i != _entitiesToRemove.end(); i++)
-        RemoveEntity(**i);
+        RemoveEntity(*i);
 
     _entitiesToRemove.clear();
 }

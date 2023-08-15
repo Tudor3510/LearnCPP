@@ -27,7 +27,7 @@ void SingleProjectile::SetPosition(const Vector2& position)
 
 void SingleProjectile::Collide(IEntity& entity)
 {
-    _level.RemoveEntity(*this);
+    _level.RemoveEntity(this);
 }
 
 void SingleProjectile::Update()
@@ -37,5 +37,5 @@ void SingleProjectile::Update()
 
     _frameCount = 0;
     if (!_level.MoveEntity(*this, _position + _velocity))
-        _level.RemoveEntity(*this);
+        _level.RemoveEntity(this);
 }
