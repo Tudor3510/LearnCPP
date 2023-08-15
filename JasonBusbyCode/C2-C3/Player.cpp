@@ -38,6 +38,5 @@ void Player::Move(const Vector2& direction)
 
 void Player::FireProjectile()
 {
-    auto projectile = new SingleProjectile(_level, 10, '*', _direction);
-    _level.SetEntity(projectile, _position + _direction);
+    _level.SetEntity(new SingleProjectile(_level, 10, '*', _direction), _position + _direction);
 }
