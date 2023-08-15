@@ -14,7 +14,7 @@ CXXFLAGS := -fdiagnostics-color=always -g
 LDFLAGS := -lwinmm
 
 # Source files and object files
-SRC := Level.cpp main.cpp SingleProjectile.cpp Vector2.cpp Player.cpp
+SRC := Level.cpp main.cpp SingleProjectile.cpp Vector2.cpp Player.cpp Fireball.cpp
 OBJ := $(SRC:.cpp=.o)
 
 # Executable name

@@ -5,6 +5,7 @@
 #include "Level.h"
 #include "SingleProjectile.h"
 #include "Player.h"
+#include "Fireball.h"
 using namespace std;
 
 class BasicTile : public ITile
@@ -55,8 +56,9 @@ int main(){
 
     level.SetTiles(wall, Vector2(4, 4), Vector2(6, 6));
 
-    Player player(level, '$');
-    level.SetEntity(&player, Vector2(1, 1));
+    auto player = new Player(level, '$');
+    player->SetWeapon(new Fireball('*', level, 20));
+    level.SetEntity(player, Vector2(1, 1));
 
     level.RenderAll();
 
@@ -75,23 +77,23 @@ int main(){
         {
             input = _getch();
 
-            auto pos = player.GetPosition();
+            auto pos = player->GetPosition();
             switch (input)
             {
             case 'w':
-                player.Move(Vector2::North);
+                player->Move(Vector2::North);
                 break;
             case 'a':
-                player.Move(Vector2::West);
+                player->Move(Vector2::West);
                 break;
             case 's':
-                player.Move(Vector2::South);
+                player->Move(Vector2::South);
                 break;
             case 'd':
-                player.Move(Vector2::East);
+                player->Move(Vector2::East);
                 break;
             case ' ':
-                player.FireProjectile();
+                player->FireProjectile();
                 break;
             }
         }
