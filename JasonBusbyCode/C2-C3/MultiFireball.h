@@ -19,6 +19,10 @@ public:
     void Attach(IEntity& entity);
     void Fire(IEntity& entity, const Vector2& direction);
     bool IsActive(IEntity& entity);
+
+
+private:
+    void CreateProjectile(const Vector2& position, const Vector2& direction);
 };
 
 
