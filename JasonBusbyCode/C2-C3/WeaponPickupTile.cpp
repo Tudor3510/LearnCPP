@@ -1,5 +1,6 @@
 #include "WeaponPickupTile.h"
-#include "Player.h"
+#include "IActor.h"
+#include <iostream>
 
 WeaponPickupTile::WeaponPickupTile(char ch, IWeapon* weapon)
 : _character(ch), _weapon(weapon)
@@ -20,10 +21,10 @@ bool WeaponPickupTile::CanEnter(IEntity& entity)
 
 void WeaponPickupTile::Enter(IEntity& entity)
 {
-    auto player = dynamic_cast<Player*>(&entity);
+    auto actor = dynamic_cast<IActor*>(&entity);
 
-    if (player == NULL)
+    if (actor == NULL)
         return;
 
-    player->SetWeapon(_weapon);
+    actor->SetWeapon(_weapon);
 }
