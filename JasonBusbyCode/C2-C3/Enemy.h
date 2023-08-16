@@ -6,6 +6,8 @@
 
 class Enemy : public Actor
 {
+    int _frameCount;
+
 public:
     Enemy(Level& level, char ch);
 

@@ -112,8 +112,8 @@ void Level::Update()
 {
     _isUpdating = true;
 
-    for (auto i = _entities.begin(); i != _entities.end(); i++)
-        (*i)->Update();
+    for (auto i = 0; i != _entities.size(); i++)
+        _entities[i]->Update();
 
     _isUpdating = false;
 
