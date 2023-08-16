@@ -7,7 +7,7 @@
 class Enemy : public Actor
 {
 public:
-    Actor(Level& level, char ch);
+    Enemy(Level& level, char ch);
 
     void Collide(IEntity& entity) override;
     void Update() override;

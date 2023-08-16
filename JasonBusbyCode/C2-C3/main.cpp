@@ -8,6 +8,8 @@
 #include "Fireball.h"
 #include "WeaponPickupTile.h"
 #include "MultiFireball.h"
+#include "Enemy.h"
+
 using namespace std;
 
 class BasicTile : public ITile
@@ -47,6 +49,7 @@ public:
 
 int main(){
     Level level(50, 20);
+
     BasicTile empty(' ', true);
     BasicTile wall('#', false);
 
@@ -65,7 +68,22 @@ int main(){
 
     auto player = new Player(level, '$');
     player->SetWeapon(new Fireball('*', level, 20));
+
     level.SetEntity(player, Vector2(1, 1));
+
+    
+    auto e1 = new Enemy(level, '!');
+    e1->SetWeapon(new Fireball('*', level, 20));
+    auto e2 = new Enemy(level, '!');
+    e2->SetWeapon(new Fireball('*', level, 20));
+    auto e3 = new Enemy(level, '!');
+    e3->SetWeapon(new Fireball('*', level, 20));
+
+    level.SetEntity(e1, Vector2(30, 15));
+    level.SetEntity(e2, Vector2(31, 15));
+    level.SetEntity(e3, Vector2(32, 15));
+    
+
 
     level.RenderAll();
 
