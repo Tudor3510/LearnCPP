@@ -31,6 +31,7 @@ public:
     void RenderAll();
 
 private:
+    IEntity* GetEntityAt(const Vector2& position) const;
     int GetIndexForXY(int x, int y) const;
     void SetCharacter(char ch, int x, int y);
 };

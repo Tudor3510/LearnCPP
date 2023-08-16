@@ -17,6 +17,16 @@ Vector2::Vector2() : _x(0), _y(0)
 int Vector2::GetX() const {  return _x;  }
 int Vector2::GetY() const {  return _y;  }
 
+bool Vector2::operator== (const Vector2& rhs) const
+{
+    return _x == rhs._x && _y == rhs._y;
+}
+
+bool Vector2::operator!= (const Vector2& rhs) const
+{
+    return !(operator==(rhs));
+}
+
 Vector2 Vector2::operator+ (const Vector2& rhs) const
 {
     return Vector2(_x + rhs._x, _y + rhs._y);

@@ -123,6 +123,15 @@ void Level::Update()
     _entitiesToRemove.clear();
 }
 
+IEntity* Level::GetEntityAt(const Vector2& position) const
+{
+    for (auto i = _entities.begin(); i != _entities.end(); i++)
+    {
+        if ((*i)->GetPosition() == position)
+            return (*i);
+    }
+}
+
 int Level::GetIndexForXY (int x, int y) const
 {
     return _width * y + x;
