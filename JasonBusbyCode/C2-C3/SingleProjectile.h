@@ -19,12 +19,12 @@ class SingleProjectile : public IProjectile
 public:
     SingleProjectile(Level& level, int damage, char ch, const Vector2& velocity);
 
-    int GetDamage();
-    char GetCharacter() const;
-    const Vector2& GetPosition() const;
-    void SetPosition(const Vector2& position);
-    void Collide(IEntity& entity);
-    void Update();
+    int GetDamage() override;
+    char GetCharacter() const override;
+    const Vector2& GetPosition() const override;
+    void SetPosition(const Vector2& position) override;
+    void Collide(IEntity& entity) override;
+    void Update() override;
 };
 
 

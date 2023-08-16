@@ -8,7 +8,7 @@ class IWeapon
 {
 public:
     virtual void Attach(IEntity& entity) = 0;
-    virtual void Fire(IEntity& entity, const Vector2& position) = 0;
+    virtual void Fire(IEntity& entity, const Vector2& direction) = 0;
     virtual bool IsActive(IEntity& entity) = 0;
 };
 

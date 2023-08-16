@@ -16,9 +16,9 @@ class MultiFireball : public IWeapon
 public:
     MultiFireball(char character, Level& level, int damage);
 
-    void Attach(IEntity& entity);
-    void Fire(IEntity& entity, const Vector2& direction);
-    bool IsActive(IEntity& entity);
+    void Attach(IEntity& entity) override;
+    void Fire(IEntity& entity, const Vector2& direction) override;
+    bool IsActive(IEntity& entity) override;
 
 
 private:

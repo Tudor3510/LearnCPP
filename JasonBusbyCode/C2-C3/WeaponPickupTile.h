@@ -13,9 +13,9 @@ private:
 public:
     WeaponPickupTile(char ch, IWeapon* weapon);
 
-    char GetCharacter() const;
-    bool CanEnter(IEntity& entity);
-    void Enter(IEntity& entity);
+    char GetCharacter() const override;
+    bool CanEnter(IEntity& entity) override;
+    void Enter(IEntity& entity) override;
 
 };
 

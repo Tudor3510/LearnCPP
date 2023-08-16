@@ -21,9 +21,9 @@ public:
     {
     }
 
-    char GetCharacter() const { return _character; }
-    bool CanEnter(IEntity& entity) { return _canEnter; }
-    void Enter(IEntity& entity) {  }
+    char GetCharacter() const override { return _character; }
+    bool CanEnter(IEntity& entity) override { return _canEnter; }
+    void Enter(IEntity& entity) override {  }
 
 };
 
@@ -37,11 +37,11 @@ public:
     {
     }
 
-    char GetCharacter() const { return _character; }
-    const Vector2& GetPosition() const { return _Vector2; }
-    void SetPosition(const Vector2& position) { _Vector2 = position; }
-    void Collide(IEntity& entity) {  }
-    void Update() {  }
+    char GetCharacter() const override { return _character; }
+    const Vector2& GetPosition() const override { return _Vector2; }
+    void SetPosition(const Vector2& position) override { _Vector2 = position; }
+    void Collide(IEntity& entity) override {  }
+    void Update() override {  }
 };
 
 

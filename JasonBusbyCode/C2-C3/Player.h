@@ -22,16 +22,16 @@ public:
     void Move(const Vector2& direction);
     void FireProjectile();
 
-    IWeapon* GetWeapon();
-    void SetWeapon(IWeapon* weapon);
-    int GetHealth() const;
-    void TakeDamage(int damage);
+    IWeapon* GetWeapon() override;
+    void SetWeapon(IWeapon* weapon) override;
+    int GetHealth() const override;
+    void TakeDamage(int damage) override;
 
-    char GetCharacter() const;
-    const Vector2& GetPosition() const;
-    void SetPosition(const Vector2& position);
-    void Collide(IEntity& entity);
-    void Update();
+    char GetCharacter() const override;
+    const Vector2& GetPosition() const override;
+    void SetPosition(const Vector2& position) override;
+    void Collide(IEntity& entity) override;
+    void Update() override;
 };
 
 
