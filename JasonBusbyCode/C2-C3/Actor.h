@@ -31,8 +31,6 @@ public:
     char GetCharacter() const override;
     const Vector2& GetPosition() const override;
     void SetPosition(const Vector2& position) override;
-    void Collide(IEntity& entity) override;
-    void Update() override;
 };
 
 #endif
