@@ -14,13 +14,18 @@ class Player : public IEntity, public IActor
     Vector2 _direction;
     Level& _level;
     std::stack<IWeapon*> _weapons;
+    int _health;
 
 public:
     Player(Level& level, char ch);
 
     void Move(const Vector2& direction);
     void FireProjectile();
+
+    IWeapon* GetWeapon();
     void SetWeapon(IWeapon* weapon);
+    int GetHealth() const;
+    void TakeDamage(int damage);
 
     char GetCharacter() const;
     const Vector2& GetPosition() const;

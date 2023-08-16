@@ -2,7 +2,7 @@
 #include "SingleProjectile.h"
 
 
-Player::Player(Level &level, char ch) : _level(level), _character(ch)
+Player::Player(Level &level, char ch) : _level(level), _character(ch), _health(100)
 {
 }
 
@@ -21,6 +21,24 @@ void Player::SetWeapon(IWeapon* weapon)
 {
     _weapons.push(weapon);
     weapon->Attach(*this);
+}
+
+
+IWeapon* Player::GetWeapon()
+{
+    return !_weapons.empty() ? _weapons.top() : NULL;
+}
+
+
+int Player::GetHealth() const
+{
+    return _health;
+}
+
+
+void Player::TakeDamage(int damage)
+{
+    _health -= damage;
 }
 
 
