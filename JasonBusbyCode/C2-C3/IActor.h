@@ -6,10 +6,10 @@
 class IActor
 {
 public:
-    virtual IWeapon* GetWeapon();
-    virtual void SetWeapon (IWeapon* weapon);
-    virtual int GetHealth() const;
-    virtual void TakeDamage(int damage);
+    virtual IWeapon* GetWeapon() = 0;
+    virtual void SetWeapon (IWeapon* weapon) = 0;
+    virtual int GetHealth() const = 0;
+    virtual void TakeDamage(int damage) = 0;
 };
 
 #endif

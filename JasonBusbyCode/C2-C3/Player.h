@@ -4,9 +4,10 @@
 #include "IEntity.h"
 #include "Level.h"
 #include "IWeapon.h"
+#include "IActor.h"
 #include <stack>
 
-class Player : public IEntity
+class Player : public IEntity, public IActor
 {
     char _character;
     Vector2 _position;
