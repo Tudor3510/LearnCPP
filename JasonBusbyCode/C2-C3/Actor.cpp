@@ -39,6 +39,9 @@ int Actor::GetHealth() const
 void Actor::TakeDamage(int damage)
 {
     _health -= damage;
+
+    if (_health <= 0)
+        _level.RemoveEntity(this);
 }
 
 

@@ -1,4 +1,5 @@
 #include "SingleProjectile.h"
+#include "IActor.h"
 
 SingleProjectile::SingleProjectile(Level &level, int damage, char ch, const Vector2 &velocity)
     : _level(level), _damage(damage), _character(ch), _velocity(velocity), _frameCount(0)
@@ -27,6 +28,10 @@ void SingleProjectile::SetPosition(const Vector2& position)
 
 void SingleProjectile::Collide(IEntity& entity)
 {
+    auto actor = dynamic_cast<IActor*>(&entity);
+    if (actor != NULL)
+        actor->TakeDamage(_damage);
+
     _level.RemoveEntity(this);
 }
 
