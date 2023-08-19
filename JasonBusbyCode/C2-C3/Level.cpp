@@ -6,12 +6,23 @@ using namespace std;
 
 
 Level::Level(int width, int height)
-    : _width(width), _height(height), _tiles(width * height), _isUpdating(false)
+    : _width(width), _height(height), _tiles(width * height), _isUpdating(false), _hasEnded(false)
 {
 }
 
 int Level::GetWidth() const { return _width; }
 int Level::GetHeight() const { return _height; }
+
+void Level::EndLevel()
+{
+    _hasEnded = true;
+}
+
+bool Level::HasLevelEnded() const
+{
+    return _hasEnded;
+}
+
 
 void Level::SetTile(ITile& tile, Vector2 pos)
 {
@@ -82,7 +93,10 @@ bool Level::MoveEntity(IEntity& entity, Vector2 pos)
 
     auto entityToEnter = GetEntityAt(pos);
     if (entityToEnter != NULL)
+    {
         entityToEnter->Collide(entity);
+        entity.Collide(*entityToEnter);
+    }
 
     tileToEnter ->Enter(entity);
 

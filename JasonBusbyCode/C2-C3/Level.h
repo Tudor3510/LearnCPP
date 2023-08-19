@@ -9,6 +9,7 @@
 
 class Level
 {
+    bool _hasEnded;
     bool _isUpdating;
     std::vector <IEntity*> _entitiesToRemove;
 
@@ -20,6 +21,9 @@ public:
     Level(int width, int height);
     int GetWidth() const;
     int GetHeight() const;
+
+    void EndLevel();
+    bool HasLevelEnded() const;
 
     void SetTile(ITile& tile, Vector2 pos);
     void SetTiles(ITile& tile, Vector2 from, Vector2 to);
