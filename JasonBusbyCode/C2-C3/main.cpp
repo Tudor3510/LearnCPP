@@ -9,6 +9,7 @@
 #include "WeaponPickupTile.h"
 #include "MultiFireball.h"
 #include "Enemy.h"
+#include "HealthPickupTile.h"
 
 using namespace std;
 
@@ -52,7 +53,7 @@ int main(){
 
     BasicTile empty(' ', true);
     BasicTile wall('#', false);
-
+    HealthPickupTile health('+', 100);
     WeaponPickupTile weapon1('%', new MultiFireball('^', level, 30));
 
     level.SetTiles(empty, Vector2(0, 0), Vector2(49, 19));
@@ -63,13 +64,13 @@ int main(){
 
     level.SetTiles(wall, Vector2(4, 4), Vector2(6, 6));
 
-
     level.SetTile(weapon1, Vector2(8, 8));
+    level.SetTile(health,Vector2(1, 1));
 
     auto player = new Player(level, '$');
     player->SetWeapon(new Fireball('*', level, 20));
 
-    level.SetEntity(player, Vector2(1, 1));
+    level.SetEntity(player, Vector2(1, 2));
 
     
     auto e1 = new Enemy(level, '!');
@@ -91,6 +92,12 @@ int main(){
     auto lastTime = timeGetTime();
     while(input != 27)
     {
+        if (level.HasLevelEnded())
+        {
+            cout << "you died!";
+            break;
+        }
+
         auto currentElapsed = timeGetTime() - lastTime;
         if(currentElapsed > 33.3)
         {
