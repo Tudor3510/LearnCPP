@@ -138,6 +138,8 @@ IEntity* Level::GetEntityAt(const Vector2& position) const
         if ((*i)->GetPosition() == position)
             return (*i);
     }
+
+    return NULL;
 }
 
 int Level::GetIndexForXY (int x, int y) const
