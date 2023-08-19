@@ -7,6 +7,12 @@ Player::Player(Level &level, char ch) : Actor(level, ch)
 {
 }
 
+void Player::TakeDamage(int damage)
+{
+    Actor::TakeDamage(damage);
+    if (GetHealth() <= 0)
+        _level.EndLevel();
+}
 
 void Player::Collide(IEntity& entity)
 {

@@ -15,6 +15,7 @@ public:
 
     void FireProjectile();
 
+    void TakeDamage(int damage) override;
     void Collide(IEntity& entity) override;
     void Update() override;
 };
