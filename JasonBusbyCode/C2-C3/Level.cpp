@@ -48,6 +48,10 @@ void Level::RemoveEntity(IEntity* entity)
 {
     if (_isUpdating)
     {
+        for(auto i = _entitiesToRemove.begin(); i != _entitiesToRemove.end(); i++)
+            if ((*i) == entity)
+                return;
+
         _entitiesToRemove.push_back(entity);
         return;
     }
@@ -75,6 +79,10 @@ bool Level::MoveEntity(IEntity& entity, Vector2 pos)
     auto tileToEnter = _tiles[GetIndexForXY(pos.GetX(), pos.GetY())];
     if (!tileToEnter->CanEnter(entity))
         return false;
+
+    auto entityToEnter = GetEntityAt(pos);
+    if (entityToEnter != NULL)
+        entityToEnter->Collide(entity);
 
     tileToEnter ->Enter(entity);
 
