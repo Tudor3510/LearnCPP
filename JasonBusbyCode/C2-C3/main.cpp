@@ -67,6 +67,9 @@ int main(){
     level.SetTile(weapon1, Vector2(8, 8));
     level.SetTile(health,Vector2(1, 1));
 
+    level.SetTile(weapon1, Vector2(29, 15));
+    level.SetTile(health,Vector2(28, 15));
+
     auto player = new Player(level, '$');
     player->SetWeapon(new Fireball('*', level, 20));
 
