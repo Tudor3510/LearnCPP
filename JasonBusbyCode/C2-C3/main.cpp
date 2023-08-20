@@ -2,6 +2,7 @@
 #include <string>
 #include <Windows.h>
 #include <conio.h>
+#include <fstream>
 #include "Level.h"
 #include "SingleProjectile.h"
 #include "Player.h"
@@ -49,47 +50,69 @@ public:
 
 
 int main(){
-    Level level(50, 20);
+    ifstream levelStream ("level");
+    if(!levelStream)
+    {
+        cout << "Can not find level" << '\n';
+        system("pause");
+        return 1;
+    }
+
+    vector<string> levelMap;
+    int levelWidth = 0;
+    while(!levelStream.eof())
+    {
+        string line;
+        getline(levelStream, line);
+        levelWidth = levelWidth < line.size() ? levelWidth : line.size();
+        levelMap.push_back(line);
+    }
+
+    levelStream.close();
+    Level level(levelWidth, levelMap.size());
 
     BasicTile empty(' ', true);
     BasicTile wall('#', false);
     HealthPickupTile health('+', 100);
     WeaponPickupTile weapon1('%', new MultiFireball('^', level, 30));
 
-    level.SetTiles(empty, Vector2(0, 0), Vector2(49, 19));
-    level.SetTiles(wall, Vector2(0, 0), Vector2(0, 19));
-    level.SetTiles(wall, Vector2(0, 0), Vector2(49, 0));
-    level.SetTiles(wall, Vector2(49, 0), Vector2(49, 19));
-    level.SetTiles(wall, Vector2(0, 19), Vector2(49, 19));
+    Player* player = NULL;
 
-    level.SetTiles(wall, Vector2(4, 4), Vector2(6, 6));
+    for (auto y = 0; y < levelMap.size(); y++)
+    {
+        auto line = levelMap[y];
+        for (auto x = 0; x < levelWidth; x++)
+        {
+            char currentCell = x < line.size() ? line[x] : ' ';
+            switch (currentCell)
+            {
+            default:
+                level.SetTile(empty, Vector2(x, y));
+            case '#':
+                level.SetTile(wall, Vector2(x, y));
+                break;
+            case '+':
+                level.SetTile(health, Vector2(x, y));
+                break;
+            case '%':
+                level.SetTile(weapon1, Vector2(x, y));
+                break;
+            case '$':
+                level.SetTile(empty, Vector2(x, y));
+                level.SetEntity(player = new Player(level, '$'), Vector2(x, y));
+                break;
+            case '!':
+                level.SetTile(empty, Vector2(x, y));
 
-    level.SetTile(weapon1, Vector2(8, 8));
-    level.SetTile(health,Vector2(1, 1));
+                Enemy* enemy = NULL;
+                level.SetEntity(enemy = new Enemy(level, '!'), Vector2(x, y));
+                enemy->SetWeapon(new Fireball('*', level, 20));
+                break;
+            }
+        }
 
-    level.SetTile(weapon1, Vector2(29, 15));
-    level.SetTile(health,Vector2(28, 15));
+    }
 
-    auto player = new Player(level, '$');
-    player->SetWeapon(new Fireball('*', level, 20));
-
-    level.SetEntity(player, Vector2(1, 2));
-
-    
-    auto e1 = new Enemy(level, '!');
-    e1->SetWeapon(new Fireball('*', level, 20));
-    auto e2 = new Enemy(level, '!');
-    e2->SetWeapon(new Fireball('*', level, 20));
-    auto e3 = new Enemy(level, '!');
-    e3->SetWeapon(new Fireball('*', level, 20));
-
-    level.SetEntity(e1, Vector2(30, 15));
-    level.SetEntity(e2, Vector2(31, 15));
-    level.SetEntity(e3, Vector2(32, 15));
-    
-
-
-    level.RenderAll();
 
     char input = '\0';
     auto lastTime = timeGetTime();
