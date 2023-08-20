@@ -64,7 +64,7 @@ int main(){
     {
         string line;
         getline(levelStream, line);
-        levelWidth = levelWidth < line.size() ? levelWidth : line.size();
+        levelWidth = levelWidth > line.size() ? levelWidth : line.size();
         levelMap.push_back(line);
     }
 
@@ -88,6 +88,7 @@ int main(){
             {
             default:
                 level.SetTile(empty, Vector2(x, y));
+                break;
             case '#':
                 level.SetTile(wall, Vector2(x, y));
                 break;
@@ -100,6 +101,7 @@ int main(){
             case '$':
                 level.SetTile(empty, Vector2(x, y));
                 level.SetEntity(player = new Player(level, '$'), Vector2(x, y));
+                player->SetWeapon(new Fireball ('*', level, 20));
                 break;
             case '!':
                 level.SetTile(empty, Vector2(x, y));
@@ -112,6 +114,8 @@ int main(){
         }
 
     }
+
+    level.RenderAll();
 
 
     char input = '\0';
