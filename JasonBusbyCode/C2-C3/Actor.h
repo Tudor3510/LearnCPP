@@ -23,7 +23,7 @@ public:
 
     virtual void Move(const Vector2& direction);
 
-    IWeapon* GetWeapon() override;
+    IWeapon* GetWeapon() const override;
     void SetWeapon(IWeapon* weapon) override;
     int GetHealth() const override;
     void TakeDamage(int damage) override;

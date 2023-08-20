@@ -24,7 +24,7 @@ void Actor::SetWeapon(IWeapon* weapon)
 }
 
 
-IWeapon* Actor::GetWeapon()
+IWeapon* Actor::GetWeapon() const
 {
     return !_weapons.empty() ? _weapons.top() : NULL;
 }
